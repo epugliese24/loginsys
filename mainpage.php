@@ -9,9 +9,12 @@ $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
 $sql->bindValue(":user", $user);
 $result=$sql->execute();
 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
-echo("<table> <tr> <th>first name</th> <th>last name</th> <th>race</th> <th>age</th></tr>");
+echo("<table> <tr> <th>delete</th><th>first name</th> <th>last name</th> <th>race</th> <th>age</th></tr>");
 foreach($rows as $row){
   echo("<tr>");
+  echo("<th>");
+  echo("<a href=deletechar.php?id=".$row['id'].">delete</a>");
+  echo("</th>");
   echo("<th>");
   echo($row['firstname'] );
   echo("</th>");
@@ -24,7 +27,7 @@ foreach($rows as $row){
   echo("<th>");
   echo($row['age'] );
   echo("</th>");}
-
+echo("</table>");
 echo('<form method=POST action="results.php">');
 echo('<header>create character</header>');
 echo('<div id="inputBox">');
