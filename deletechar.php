@@ -2,7 +2,7 @@
 require_once('connect.php');
 session_start();
 $user=$_SESSION['user'];
-echo($user);
+echo($user."<br>");
 $charid=$_GET['id'];
 echo($charid);
 $sql=$conn->prepare("DELETE FROM tblChars WHERE id = :charid AND userID=:userid");
