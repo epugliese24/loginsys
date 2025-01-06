@@ -1,8 +1,10 @@
 <?php
+require('layout.html');
 require_once('connect.php');
 echo('<a href="logout.php">log out</a><br>');
 session_start();
 $user=$_SESSION['user'];
+
 echo($_SESSION['user']);
 echo("<br> you logged in<br>");
 $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
@@ -29,7 +31,7 @@ foreach($rows as $row){
   echo("</th>");}
 echo("</table>");
 echo('<form method=POST action="results.php">');
-echo('<header>create character</header>');
+echo('<header id="loginhead">create character</header>');
 echo('<div id="inputBox">');
 echo('<input type=text name="firstname" placeholder="first name here"> <br>');
 echo('<input type=text name="lastname" placeholder="last name here"><br>');

@@ -1,5 +1,6 @@
 <?php
 require_once('connect.php');
+require('layout.html');
 session_start();
 $user=$_SESSION['user'];
 echo($user."<br>");
