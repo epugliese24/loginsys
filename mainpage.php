@@ -1,11 +1,9 @@
 <?php
 require('layout.html');
-require_once('connect.php');
-echo('<a id="logoutBanner" href="logout.php">log out</a><br>');
 session_start();
 $user=$_SESSION['user'];
-
-echo($_SESSION['user']);
+require_once('connect.php');
+echo('<div id="logoutBanner"><span id="showUser" style="text-align:left;">User: '.$user.'</span> <a href="logout.php">Log Out </a> </div><br>');
 echo("<br> you logged in<br>");
 $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
 $sql->bindValue(":user", $user);
