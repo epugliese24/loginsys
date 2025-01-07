@@ -36,3 +36,9 @@ form {
     top:90%;
     left:39%;
   }
+   #logoutBanner{
+    text-align: right;
+    background-color: white;
+    font-size: 15px;
+    text-decoration: none;
+   }

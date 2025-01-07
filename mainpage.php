@@ -1,7 +1,7 @@
 <?php
 require('layout.html');
 require_once('connect.php');
-echo('<a href="logout.php">log out</a><br>');
+echo('<a id="logoutBanner" href="logout.php">log out</a><br>');
 session_start();
 $user=$_SESSION['user'];
 
