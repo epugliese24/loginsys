@@ -1,8 +1,13 @@
 <?php
+require_once('connect.php');
 require('layout.html');
 session_start();
-$user=$_SESSION['user'];
-require_once('connect.php');
+$user=($sql=$conn->prepare("SELECT email FROM user WHERE userID = 
+:id"));
+$sql->bindValue(":id", $_SESSION['user']);
+$sql->execute();
+// $_SESSION['user']
+
 echo('<div id="logoutBanner"><span id="showUser" style="text-align:left;">User: '.$user.'</span> <a href="logout.php">Log Out </a> </div><br>');
 echo("<br> you logged in<br>");
 $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
