@@ -43,3 +43,21 @@ form {
   display: block;
   padding: 5px;
 }
+
+#charInfoBox{
+  font-size: 30px;
+  text-align: center;
+  border: solid 2px black;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  width: 400px;
+  height: 500px;
+  box-sizing: border-box;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

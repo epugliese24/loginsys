@@ -2,11 +2,7 @@
 require_once('connect.php');
 require('layout.html');
 session_start();
-$user=($sql=$conn->prepare("SELECT email FROM user WHERE userID = 
-:id"));
-$sql->bindValue(":id", $_SESSION['user']);
-$sql->execute();
-// $_SESSION['user']
+$user=$_SESSION['user'];
 
 echo('<div id="logoutBanner"><span id="showUser" style="text-align:left;">User: '.$user.'</span> <a href="logout.php">Log Out </a> </div><br>');
 echo("<br> you logged in<br>");
@@ -14,7 +10,7 @@ $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
 $sql->bindValue(":user", $user);
 $result=$sql->execute();
 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
-echo("<table> <tr> <th>delete</th><th>first name</th> <th>last name</th> <th>race</th> <th>age</th></tr>");
+echo("<table> <tr> <th>characters:</th> </tr>");
 foreach($rows as $row){
   echo("<tr>");
   echo("<th>");
@@ -27,10 +23,9 @@ foreach($rows as $row){
   echo($row['lastname'] );
   echo("</th>");
   echo("<th>");
-  echo($row['race'] );
+  echo("<a href=selectchar.php?id=".$row['id'].">select</a>");
   echo("</th>");
-  echo("<th>");
-  echo($row['age'] );
+
   echo("</th>");}
 echo("</table>");
 echo('<form method=POST action="results.php">');
@@ -40,6 +35,8 @@ echo('<input type=text name="firstname" placeholder="first name here"> <br>');
 echo('<input type=text name="lastname" placeholder="last name here"><br>');
 echo('<input type=text name="race" placeholder="race here"><br>');
 echo('<input type=text name="age" placeholder="age here (must be an int)"><br>');
+echo('<input type=text name="sex" placeholder="gender/sex"><br>');
+echo('<input type=text name="info" placeholder="main/important info"><br>');
 echo('</div>');
 echo('<input type=submit id="submitButton"> ');
 echo('</form>');
