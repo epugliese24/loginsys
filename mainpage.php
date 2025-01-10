@@ -2,12 +2,18 @@
 require_once('connect.php');
 require('layout.html');
 session_start();
-$user=$_SESSION['user'];
-
-echo('<div id="logoutBanner"><span id="showUser" style="float:left;">User: '.$user.'</span> <a href="logout.php">Log Out </a> </div><br>');
-$sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
-$sql->bindValue(":user", $user);
+$username=$_SESSION['user'];
+// dis dont work
+$sql=$conn->prepare("SELECT email FROM user WHERE pkuser = :username");
+$sql->bindValue(":username", $username);
 $result=$sql->execute();
+$rows = $sql->fetchAll(PDO::FETCH_ASSOC);
+echo('<div id="logoutBanner"><span id="showUser" style="float:left;">User: '.$rows[0]["email"].'</span> <a href="logout.php">Log Out </a> </div><br>');
+$sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
+$sql->bindValue(":user", $username);
+$result=$sql->execute();
+
+
 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
 if(isset($_GET['deleted'])){
 echo("successfully deleted character ". $_GET['deleted']);}
@@ -32,8 +38,9 @@ foreach($rows as $row){
   echo("<th>");
   echo("<a href=deletechar.php?id=".$row['id'].">delete</a>");
   echo("</th>");
-
   echo("</th>");}
+
+//creation form
 echo("</table>");
 echo('<form method=POST action="results.php">');
 echo('<header id="loginhead">create character</header>');
