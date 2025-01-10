@@ -21,3 +21,4 @@ $info=$_POST['info'];
 
 $sql->execute();
 echo("success");
+header("location:mainpage.php");

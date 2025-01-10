@@ -61,3 +61,16 @@ form {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+#submitButton{  
+  position: absolute;
+  font-size:25px;
+  top: 80%;
+  left: 39%;
+  border: solid 2px black;
+  border-radius: 5px;
+  background-color: white;
+}
+#inputBox input{
+font-size: large;
+}

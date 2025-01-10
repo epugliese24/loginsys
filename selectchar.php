@@ -3,7 +3,7 @@ require_once('connect.php');
 require('layout.html');
 session_start();
 $user=$_SESSION['user'];
-echo('<div id="logoutBanner"><span id="showUser" style="text-align:left;">User: '.$user.'</span> <a href="logout.php">Log Out </a> </div><br>');
+echo('<div id="logoutBanner"><span id="showUser" style="float:left;">User: '.$user.' <a href="mainpage.php">Go Back? </a></span> <a href="logout.php">Log Out </a> </div><br>');
 $charid=$_GET['id'];
 echo("selected character id: ".$charid."<br>");
 $sql=$conn->prepare("SELECT * FROM tblChars WHERE id = :charid");

@@ -10,3 +10,4 @@ $sql=$conn->prepare("DELETE FROM tblChars WHERE id = :charid AND userID=:userid"
 $sql->bindValue(":charid", $charid);
 $sql->bindValue(":userid", $user);
 $result=$sql->execute();
+header("location:mainpage.php?deleted=".$charid);
