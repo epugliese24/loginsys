@@ -13,7 +13,13 @@ $sql=$conn->prepare("SELECT * FROM tblChars WHERE userID = :user");
 $sql->bindValue(":user", $username);
 $result=$sql->execute();
 
-
+if($rows[0]["email"]=='eee'){
+  echo("ur an admin <br>");
+  echo("<a href='admininv.php'>see all items</a><br>");
+}
+else{
+  echo('hii<br>');
+};
 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
 if(isset($_GET['deleted'])){
 echo("successfully deleted character ". $_GET['deleted']);}

@@ -53,6 +53,33 @@ foreach($rows as $row){
   echo($row["info"]."<br>");
   echo("</th>");
   echo("</th>");}
-echo("</table>");
+echo("</table> <br>");
+
+echo("
+<form id='additem' method=POST action='additem.php?id=".$charid."'>
+<input type=text name='itemName' placeholder='input item name'></input>
+<select  name='type'placeholder='select type'>
+<option value='weapon'>weapon</option>
+<option value='item'>item</option>
+</select>
+<input name='amt'type=number placeholder='amount'></input>
+<input type=submit>");
+echo("<div id='itemlist'>");
+$sql=$conn->prepare("SELECT * FROM tblinv WHERE fkchar = :charid");
+$sql->bindValue(":charid", $charid);
+$result=$sql->execute();
+$meow = $sql->fetchAll(PDO::FETCH_ASSOC);
+echo("<ul>");
+foreach($meow as $row)
+{
+  echo("<li>");
+  echo($row["itemname"].", ".$row["itemtype"].", ".$row["amt"]);
+  echo("</li>");
+}
+echo("</ul>");
+echo("</div>
+
+</form>
+");
 
 echo('</div>');

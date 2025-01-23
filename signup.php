@@ -1,6 +1,6 @@
 <?php
 require('layout.html');
-echo('<form method=POST action="createuser.php">');
+echo('<form  method=POST action="createuser.php">');
 echo('<header id="loginhead">sign up</header><br>');
 echo('<div id="inputBox">');
 echo('<label for="email">email:<br>');
