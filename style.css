@@ -99,3 +99,9 @@ font-size: large;
   overflow-x: hidden;
   border-radius: 5px;
 }
+.adminbox{
+  background-color: white;
+  border:solid 2px black;
+  padding:5px;
+  margin:5px;
+}
