@@ -52,7 +52,8 @@ echo("</div>");
 $sql=$conn->prepare("SELECT tblChars.id,tblChars.firstname,tblinv.itemname,tblinv.itemtype,tblinv.amt
 FROM tblChars 
 RIGHT JOIN tblinv
-ON tblChars.id = tblinv.fkchar;
+ON tblChars.id = tblinv.fkchar
+ORDER BY tblChars.firstname, tblinv.itemname;
 ");
 $result=$sql->execute();
 $rows = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -63,11 +64,11 @@ echo("items
 <table>
 <tr> <th>char id</th><th>char fname</th><th>item name</th><th>item type</th><th>item amt</th> </tr>");
 foreach($rows as $row){
-    echo("<tr><th><strong>".$row['id']."</strong></th>");
-    echo("<th><strong>".$row['firstname']."</strong> </th>");
-    echo("<th>".$row['itemname']."</th>");
-    echo("<th>".$row['itemtype']."</th>");
-    echo("<th>[".$row['amt'] ."]</th></tr>");
+    echo("<tr><th>".$row['id']."</th>");
+    echo("<th>".$row['firstname']." </th>");
+    echo("<td>".$row['itemname']."</td>");
+    echo("<td>".$row['itemtype']."</td>");
+    echo("<td>[".$row['amt'] ."]</td></tr>");
 }
 echo("</table>");
 echo("</div>");
